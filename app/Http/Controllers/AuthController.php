@@ -80,11 +80,11 @@ class AuthController extends Controller
 
     public function me()
     {
-        
         try{
-           
-            
-            
+           $user = Auth::user();
+           return response()->json([
+                'user' => $user,
+           ],200);
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Internal Server Error',
