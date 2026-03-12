@@ -1,0 +1,17 @@
+info:
+  name: Update Note
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://127.0.0.1:8000/api/notes/{{note_id}}
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

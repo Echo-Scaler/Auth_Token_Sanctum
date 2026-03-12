@@ -12,7 +12,7 @@ class NoteStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,8 @@ class NoteStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
+            "title" => "required|string|max:225",
+            "description" => "required|string|max:255",
+            ];
     }
 }

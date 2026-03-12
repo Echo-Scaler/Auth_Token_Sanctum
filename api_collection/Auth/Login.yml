@@ -1,0 +1,27 @@
+info:
+  name: Login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://127.0.0.1:8000/api/login
+  auth: none
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.body;
+        const token = body && body.token ? String(body.token).trim() : "";
+        if (token) {
+          // Save token for subsequent requests
+          bru.setVar("token", token);
+          bru.setEnvVar("token", token, { persist: true });
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
