@@ -69,6 +69,9 @@ class AuthController extends Controller
     public function logout()
     {
         try{
+            $user = Auth::user();
+            //delete_token_(documentation)
+            $user->currentAccessToken()->delete(); //logout-profile
             
         }catch(Exception $e){
             return response()->json([
